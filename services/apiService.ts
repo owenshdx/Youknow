@@ -3,16 +3,16 @@ import { TickerData } from '../types';
 
 /**
  * NOTE TO USER:
- * This service is now configured to fetch data from your local Python backend
- * running on http://localhost:8501. This is the most reliable method and avoids
- * errors from public proxies.
+ * This service now fetches data from the same server that serves the webpage.
+ * The request goes to the `/data` endpoint of the Python Flask server.
  *
  * To get live data, you MUST run the Python server as described in `backend_instructions.md`.
  * If the server is not running, the app will fall back to mock data.
  */
 export const fetchAllTickerData = async (tickers: string[]): Promise<TickerData[]> => {
   try {
-    const response = await fetch(`http://localhost:8501/data?tickers=${tickers.join(',')}`);
+    // Use a relative URL, which will work seamlessly with the local Flask server.
+    const response = await fetch(`/data?tickers=${tickers.join(',')}`);
     
     if (!response.ok) {
         // This will be caught by the calling hook, triggering the mock data fallback.

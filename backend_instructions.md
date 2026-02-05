@@ -1,9 +1,9 @@
 
 # Backend Setup for Live Yahoo Finance Data
 
-This application is designed to connect to a local Python backend to fetch live market data from Yahoo Finance. This approach is necessary because of web browser security policies (CORS) that prevent direct data requests from a website to an external service like Yahoo's.
+The dashboard runs on a simple, local Python web server to reliably fetch live market data from Yahoo Finance. This approach avoids browser security issues and is more stable than public proxies.
 
-The Python server acts as a middleman: your browser asks the local server for data, and the server gets it from Yahoo Finance for you.
+The new, simplified process is to run a single command and visit a single URL.
 
 ## Step 1: Install Python
 
@@ -11,16 +11,16 @@ If you don't have Python installed, download and install the latest version from
 
 ## Step 2: Install Required Libraries
 
-Open your terminal or command prompt and run the following command to install the necessary Python libraries:
+Open your terminal or command prompt and run the following command to install the necessary Python libraries. If you previously installed `streamlit`, this command will add the new required libraries.
 
 ```bash
-pip install streamlit yfinance pandas streamlit-cors
+pip install Flask Flask-Cors yfinance pandas
 ```
 
-- **streamlit**: A fast and easy way to create web apps in Python. We use it here to create our simple API server.
+- **Flask**: A lightweight and powerful web server framework for Python.
+- **Flask-Cors**: An extension for Flask that handles cross-origin resource sharing (CORS).
 - **yfinance**: The library that pulls data directly from Yahoo Finance.
 - **pandas**: A powerful data manipulation library that `yfinance` depends on.
-- **streamlit-cors**: A utility to handle the CORS policy, allowing your browser's frontend to communicate with this backend.
 
 ## Step 3: Run the Backend Server
 
@@ -28,16 +28,24 @@ pip install streamlit yfinance pandas streamlit-cors
 2.  Run the following command:
 
 ```bash
-streamlit run main.py
+python main.py
 ```
 
-You should see output in your terminal indicating that the server is running, typically on `http://localhost:8501`. A browser window might open showing a blank page; this is normal. The server is running correctly, and the blank page is because we've hidden the UI elements.
+You should see output in your terminal like this:
+```
+Starting Flask server...
+Dashboard will be available at http://localhost:5000
+```
 
 **Leave this terminal window open.** The server needs to be running for the dashboard to get live data.
 
 ## Step 4: Use the Dashboard
 
-With the backend server running, you can now open or refresh the `index.html` file in your browser. The dashboard will automatically connect to your local server on `http://localhost:8501` and start displaying live data from Yahoo Finance.
+With the backend server running, open your web browser and go to the following URL:
+
+[http://localhost:5000](http://localhost:5000)
+
+The dashboard will load and automatically connect to your local server to display live data. There is no longer any need to open the `index.html` file directly.
 
 ## To Stop the Backend
 
