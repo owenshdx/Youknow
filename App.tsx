@@ -72,9 +72,9 @@ const App: React.FC = () => {
             <p className="text-gray-400">Personal-use tool for identifying opportunities</p>
           </div>
           <div className="text-right mt-4 sm:mt-0">
-            <div className={`flex items-center gap-2 px-3 py-1 rounded-full ${isMarketOpen ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                <span className={`h-2 w-2 rounded-full ${isMarketOpen ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                <span>Market is {isMarketOpen ? 'Open' : 'Closed'}</span>
+            <div className={`flex items-center gap-3 px-4 py-2 rounded-full text-sm font-semibold ${isMarketOpen ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
+                <span className={`h-3 w-3 rounded-full ${isMarketOpen ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></span>
+                <span>Market {isMarketOpen ? 'Open' : 'Closed'}</span>
             </div>
             <p className="text-xs text-gray-500 mt-1">Last Updated: {lastUpdated ? lastUpdated.toLocaleTimeString() : 'N/A'}</p>
           </div>

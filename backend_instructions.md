@@ -11,14 +11,13 @@ If you don't have Python installed, download and install the latest version from
 
 ## Step 2: Install Required Libraries
 
-Open your terminal or command prompt and run the following command to install the necessary Python libraries. If you previously installed `streamlit`, this command will add the new required libraries.
+Open your terminal or command prompt and run the following command to install the necessary Python libraries.
 
 ```bash
-pip install Flask Flask-Cors yfinance pandas
+pip install Flask yfinance pandas
 ```
 
 - **Flask**: A lightweight and powerful web server framework for Python.
-- **Flask-Cors**: An extension for Flask that handles cross-origin resource sharing (CORS).
 - **yfinance**: The library that pulls data directly from Yahoo Finance.
 - **pandas**: A powerful data manipulation library that `yfinance` depends on.
 
@@ -45,7 +44,12 @@ With the backend server running, open your web browser and go to the following U
 
 [http://localhost:5000](http://localhost:5000)
 
-The dashboard will load and automatically connect to your local server to display live data. There is no longer any need to open the `index.html` file directly.
+---
+### **IMPORTANT!**
+You **MUST** open your web browser and type `http://localhost:5000` into the address bar. 
+
+**DO NOT** open the `index.html` file directly from your folder. Opening the file directly will cause connection errors because the browser's security rules will block it from talking to the server.
+---
 
 ## To Stop the Backend
 

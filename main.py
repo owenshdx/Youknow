@@ -1,6 +1,5 @@
 
 from flask import Flask, jsonify, request, send_from_directory
-from flask_cors import CORS
 import yfinance as yf
 import pandas as pd
 import logging
@@ -8,7 +7,6 @@ import logging
 # --- Flask App Setup ---
 # This creates a web server that serves files from the current directory.
 app = Flask(__name__, static_folder='.', static_url_path='')
-CORS(app)  # Enable CORS for all routes, which is a good practice.
 
 # Suppress verbose logging from yfinance to keep the console clean.
 logging.getLogger('yfinance').setLevel(logging.ERROR)
